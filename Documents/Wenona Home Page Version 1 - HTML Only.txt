@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+
+<div style="height:50px; background-color:white", align="center", class="topnav">
+  <a class="active" href="#home">CRC [Insert Logo]</a>
+  <a href="#about">About</a>
+  <a href="#contact">Contact</a>
+  <a href="#fact">FAQ</a>
+  <a href="#signin">Sign In</a>
+</div> 
+
+
+<body style="background-color:#D0D0D0; background-image:url(background.jpg); background-size:cover; background-repeat: no-repeat;">
+
+<div style="background-color:white; height:40px", align="center">
+  <a>Personal</a>
+  <a style="background-color:#a6a6a6">Commercial</a>
+  <a style="background-color:#66a3ff">-------------------------------------------------------</a>
+ </div>
+  
+<div style="background-color:#F0F0F0; height: 30px", align="center">
+  <a>Search your location...----------------------------------------------</a>
+ </div>
+
+<div style="background-color:white; height:30px"; align="center">
+ </div>
+ 
+ <div style="background-color:#F0F0F0; height: 30px", align="center">
+	<a>DD/MM/YY</a>
+    <a>Pick up time...---------------------------------------</a>
+ </div>
+ 
+ <div style="background-color:white; height:30px"; align="center">
+ </div>
+ 
+  <div style="background-color:white" align="center">
+  	<a style="background-color:#66a3ff"> Select Vehicle</a>
+  </div>
+  
+ <div style="background-color:white; height:20px"; align="center">
+ </div>
+
+<footer>
+  <p align="center">Created by BLINK192</p>
+  <p align="center">Contact information: <a href="mailto:CarRentalCompany@example.com">
+  CarRentalCompany@example.com</a>.</p>
+</footer>
+
+  
+</div> 
+
+</body>
+</html>

@@ -1,0 +1,254 @@
+
+<!DOCTYPE html>
+
+<html>
+<head>
+<style>
+body
+{
+	background-image: url(background.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-color: #d1d2d4;
+	font-family: Arial;
+	margin: 0;
+}
+
+
+h1
+{
+	padding-left: 20px;
+	color: #1b75bb;
+	font-size: 36px;
+}
+
+
+p
+{
+	padding-left: 20px;
+	font-family: Arial;
+    	color: #000000;
+    	font-size: 15px;
+}
+
+ul.nav 
+{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: white;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	color: black;
+}
+
+.nav
+{
+	padding-right: 20px;
+}
+
+.nav
+{
+	height: 50px;
+	width: 17%;
+	float: left;
+	color: black;
+}
+
+.nav a
+{
+	display: block;
+	color: black;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+}
+
+.nav a:hover:not(.active)
+{
+	background-color: #b3e6ff;
+	color: black;
+}
+
+
+img
+{
+	height: 50%;
+}
+
+button
+{
+	margin-left: 20px;
+	background-color: #1b75bb;
+	color: white;
+	font-size: 20px;
+	font-family: Arial;
+	width: 20%;
+	text-align:center;
+	cursor: pointer;
+	border:none;
+}
+
+button:hover
+{
+	
+	background-color:white;
+	color: #1b75bb;
+}
+
+.linkers:link
+{
+	padding-left: 20px;
+	color: #1549d6;
+}
+
+.linkers:hover
+{
+	color: 1549d6;
+}
+
+.linkers:active
+{
+	color: f2f241;
+}
+
+main
+{
+	margin-top:50px;
+}
+
+div
+{
+	background-color: white;
+	width: 50%;
+	height: 300px;
+	margin:auto;
+}
+
+ul.everything
+{
+	list-style-type: none;
+	overflow: hidden;
+	background-color: #1b75bb; 
+	width: 100%;
+	padding-left: 0;
+}
+
+
+li.everything
+{
+	background-color: #a7a9ab;
+	float: left;
+	width: 20%;
+	color: black;	
+	border-bottom: 1px solid #a7a9ab;
+	text-align: center;
+	height: 25px;
+	padding-top: 5px;
+}
+
+.active
+{
+	background-color: white;
+	float: left;
+	width:20%;
+	color: black;
+	border-bottom: 1px solid #a7a9ab;
+	text-align: center;
+	height: 25px;
+	padding-top: 5px;
+}
+
+.location
+{
+	width: 98%;
+	padding:10px 20px;
+	margin:8px;
+	display: inline-block;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+	background-color: #dbdbdb;
+	color:black;
+}
+
+.others
+{
+	width: 49%;
+	padding:10px 20px;
+	margin:8px;
+	display: inline-block;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+	background-color: #dbdbdb;
+	color:black;
+}
+
+.divlinks
+{
+	color:black;
+	text-decoration: none;
+}
+
+
+.seperation
+{
+	height:200px;
+	opacity: 0;
+	background-color:#d1d2d4;
+}
+
+.centeredtext
+{
+	text-align:center;
+}
+
+</style>
+</head>
+<body>
+
+<ul class = "nav">
+	<li> <img class = "nav" src = "logo.png"> </li>
+	<li><a class = "nav" href = "https://www.google.com.au/"> About</a> </li>
+	<li><a class = "nav" href = "https://www.google.com.au/"> Contact </a></li>
+	<li><a class = "nav" href = "https://www.google.com.au/"> FAQ</a></li>
+	<li><a class = "nav" href = "https://www.google.com.au/"> Sign In </a></li>
+	
+</ul>
+
+
+<main>
+
+<div class = "seperation"> </div>
+<div>
+<ul class = "everything">
+	<li class = "active"> <a class ="divlinks" href ="#">Personal</a></li>
+	<li class = "everything"> <a class ="divlinks" href ="#">Commercial</a></li>
+</ul>
+
+<input class = "location" type = "text" name = "location" placeholder = "Search your location">
+
+<input class = "others" type = "text" name = "date" placeholder = "DD/MM/YYYY">
+<input class = "others" type = "text" name = "date" placeholder = "Pick up time">
+<button>Select Vehicle</button>
+
+
+<footer>
+  <p align="center">Created by BLINK192</p>
+  <p align="center">Contact information: <a href="mailto:CarRentalCompany@example.com">
+  CarRentalCompany@example.com</a>.</p>
+</footer>
+
+
+</div>
+
+</main>
+
+</body>
+</html>
+
+
+
