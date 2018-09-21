@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.views import View
+from django.http import HttpResponse, HttpRequest
 
 def index(request):
-    return HttpResponse("Hello world, this is index")
+    return render(request, 'CRCApplication/signin.html')
