@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<ul class = "nav">
+	<li> <a class = "nav" href = "#"> <img src = "logo.png"> </a> </li>
+	<a class = "nav" href = "#"> About</a> </li>
+	<li><a class = "nav" href = "#"> Contact </a></li>
+	<li><a class = "nav" href = "#"> FAQ</a></li>
+	<li><a class = "nav" href = "#"> Sign In </a></li>
+</ul>
+<main>
+
+<div class = "spacing"> </div>
+
+
+<div class="tab">
+  <button class="tablinks" onclick="Options(event, 'Customers')">Customers</button>
+  <button class="tablinks" onclick="Options(event, 'Employees')">Employees</button>
+  <button style = "float:right; background-color: #1b75bb;"> x </button>
+</div>
+
+<div id="Customers" class="tabcontent">
+  <h3>Customers</h3>
+  <p>Our Customer sign-in is currently in development, keep an eye out for it soon!</p>
+</div>
+
+<div id="Employees" class="tabcontent">
+  <h3>Employees</h3>
+  <form action = "#">
+  <input class = "divlength" type = "text" name = "Username" placeholder = "Username">
+  <input class = "divlength" type = "password" name = "password" placeholder = "Password">
+  <button class = "specificbutton"> Submit </button>
+</div>
+
+<script>
+function Options(evt, customer_employee) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(customer_employee).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+</script>
+</main>   
+</body>
+</html> 
