@@ -1,0 +1,1 @@
+SELECT cars.Car_MakeName, cars.Car_Model, cars.Car_SeriesYear, stores.Store_City, stores.Store_State_Name FROM orders JOIN cars ON orders.Car_ID = cars.Car_ID JOIN stores ON orders.Order_ReturnStoreID = stores.Store_ID;
