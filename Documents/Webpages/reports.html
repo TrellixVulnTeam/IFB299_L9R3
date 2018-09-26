@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="stylesheet2.css">
+</head>
+<body>
+    <Enav>
+        <ul>
+        <li><a href = "file:///C:/Users/20123/Documents/University/2018/Semester%202/IFB299%20IT%20Project%20Design%20and%20Development/Assessment/Webpages/employee_homescreen.html"><img class = "logo" src = "logo.png"> </a></li>
+        <li> <a href = "file:///C:/Users/20123/Documents/University/2018/Semester%202/IFB299%20IT%20Project%20Design%20and%20Development/Assessment/Webpages/customer_results.html"> Customers </a></li>
+        <li> <a href = "file:///C:/Users/20123/Documents/University/2018/Semester%202/IFB299%20IT%20Project%20Design%20and%20Development/Assessment/Webpages/vehicles.html"> Vehicles </a></li>
+        <li> <a href = "file:///C:/Users/20123/Documents/University/2018/Semester%202/IFB299%20IT%20Project%20Design%20and%20Development/Assessment/Webpages/stores.html"> Stores</a></li>
+        <li> <a href = "file:///C:/Users/20123/Documents/University/2018/Semester%202/IFB299%20IT%20Project%20Design%20and%20Development/Assessment/Webpages/reports.html"> Reports</a></li>
+        <li> <a href = "file:///C:/Users/20123/Documents/University/2018/Semester%202/IFB299%20IT%20Project%20Design%20and%20Development/Assessment/Webpages/home_page.html"> Sign-out </a></li>
+        </ul>
+    </Enav>
+    <br>
+    <br>
+    <br>
+    <h1>Employee Dashboard</h1>
+<main class = "everyother_page">
+    <div class = "white_space_employees">
+        <h2>Reports</h2>
+        <table class ="report" id = "tables">
+           <tr>
+               <th onclick="sortTable(0)" style="cursor:pointer">Name</th>
+               <th onclick="sortTable(1)" style="cursor:pointer">File</th>
+               <th onclick="sortTable(2)" style="cursor:pointer">Priority</th>
+               <th onclick="sortTable(3)" style="cursor:pointer">Author</th>
+           </tr> 
+           <tr>
+               <td>Report 1</td>
+               <td><a href ="pow.png"download>File 1</a></td>
+               <td>High</td>
+               <td>CEO</td>
+           </tr>
+           <tr>
+               <td>Report 2</td>
+               <td><a href ="logo.png" download>File 2</a></td>
+               <td>Medium</td>
+               <td>Employee 1</td>
+           </tr>
+           <tr>
+               <td>Report 3</td>
+               <td><a href ="logo.png" download>File 3</a></td>
+               <td>None</td>
+               <td>Board Member 1</td>
+           </tr>
+        </table>
+    </div>
+</main>
+<footer>
+<p> &copy; 2018 CRC </p>   
+</footer>
+<script>
+    function sortTable(num) 
+    {
+        var table, rows, switching,x, y, z, do_anything, direction, switchcount = 0;
+  
+        table = document.getElementById("tables");
+        switching = true;
+        direction = "asc"; 
+
+        while (switching == true) 
+        {
+            switching = false;
+            rows = table.rows;
+            for (z = 1; z < (rows.length - 1); z++) 
+            {
+                do_anything = false;
+                x = rows[z].getElementsByTagName("td")[num];
+                y = rows[z + 1].getElementsByTagName("td")[num];
+                if (direction == "asc") 
+                {
+                    if ((x.innerHTML.toLowerCase()) > (y.innerHTML.toLowerCase())) 		  
+                    {
+                        do_anything = true;
+                        break;
+                    }
+                } 
+                else if (direction == "desc") 
+                {
+                    if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) 
+                    {
+                        do_anything = true;
+                        break;
+                    }
+                }
+            }
+            if (do_anything == true) 
+            {
+                rows[z].parentNode.insertBefore(rows[z + 1], rows[z]);
+                switching = true;
+                switchcount ++;      
+            }
+            else
+            {
+                if (switchcount == 0 && direction == "asc") 
+                {
+                    direction = "desc";
+                    switching = true;
+                }
+            }
+        }
+    }
+</script>
+</body>
+</html>
+
+<!-- THIS PAGE IS SLIGHTLY BROKEN.... DOWNLOAD FUNCTIONALITY ONLY WORKS ON EDGE NOT CHROME -->
