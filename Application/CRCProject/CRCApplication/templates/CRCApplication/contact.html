@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="{% static 'css/stylesheet2.css' %}">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href = "{% url 'home_page' %}"><img class = "logo" src = "{% static 'images/logo.png' %}"> </a></li>
+            <li> <a href = "{% url 'about' %}"> About </a></li>
+            <li> <a href = "{% url 'contact' %}"> Contact </a></li>
+            <li> <a href = "{% url 'FAQ' %}"> FAQ</a></li>
+            <li> <a href = "{% url 'sign_in' %}"> Sign-in </a></li>
+        </ul>
+    </nav>
+
+
+    <main class="everyother_page">
+        <div class="white_space">
+            <h2>Need to Contact Us?</h2>
+            <div class = "fifty_fifty">
+            <br>
+            <p class = remove_spacing><strong>Location 1:</strong></p>
+            <p class = remove_spacing>Ph: 0404 040 404</p>
+            <p class = remove_spacing>123 CRC Street</p>
+            <p class = remove_spacing>Location, State, 1212</p>
+            <br>
+            <br>
+            <p class = remove_spacing><strong>Location:2</strong></p>
+            <p class = remove_spacing>Ph: 0202 020 202</p>
+            <p class = remove_spacing>456 CRC Street</p>
+            <p class = remove_spacing>Location, State 3434</p>
+            </div>
+            <div class="fifty_fifty">
+                <br>
+                <p class = remove_spacing><strong>Location 3:</strong></p>
+                <p class = remove_spacing>Ph: 0303 030 303</p>
+                <p class = remove_spacing>789 CRC Street</p>
+                <p class = remove_spacing>Location, State, 5656</p>
+                <br>
+                <br>
+                <p class = remove_spacing><strong>Customer Service Line</strong></p>
+                <p class = remove_spacing>Ph: 1234 5678</p>
+
+            </div>
+        </div>
+    </main>
+    <div class="about_spacing"></div>
+</body>
+<footer>
+<p> &copy; 2018 CRC </p>   
+</footer>
+</html>

@@ -1,0 +1,129 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="{% static 'css/stylesheet2.css' %}">
+</head>
+<body>
+    <Enav>
+        <ul>
+            <li><a href = "{% url 'home_page' %}"><img class = "logo" src = "{% static 'images/logo.png' %}"> </a></li>
+            <li> <a href = "{% url 'customer_results' %}"> Customers </a></li>
+            <li> <a href = "{% url 'vehicles' %}"> Vehicles </a></li>
+            <li> <a href = "{% url 'stores' %}"> Stores</a></li>
+            <li> <a href = "{% url 'reports' %}"> Reports</a></li>
+            <li> <a href = "{% url 'home_page' %}"> Sign-out </a></li>
+        </ul>
+    </Enav>
+    <br>
+    <br>
+    <br>
+    <h1> Employee Dashboard</h1>
+<main class="everyother_page"> 
+    <div class = "white_space_employees">
+        <h2>Stores</h2>
+        <table class ="report" id = "tables">
+            <tr>
+                <th onclick="sortTable(0)" style="cursor:pointer" >Store</th>
+                <th onclick="sortTable(1)" style="cursor:pointer">Phone Number</th>
+                <th onclick="sortTable(2)" style="cursor:pointer">Email</th>
+                <th onclick="sortTable(3)" style="cursor:pointer">Car Stock</th>
+                <th onclick="sortTable(4)" style="cursor:pointer">Truck Stock</th>
+            </tr>
+            <tr>
+                <td>Store 1</td>
+                <td>0400 000 001</td>
+                <td>Store1@outlook.com</td>
+                <td>20</td>
+                <td>7</td>
+            </tr>
+            <tr>
+                <td>Store 2</td>
+                <td>0400 000 002</td>
+                <td>Store2@outlook.com</td>
+                <td>2</td>
+                <td>17</td>
+            </tr>
+
+            <tr>
+                <td>Store 3</td>
+                <td>0400 000 003</td>
+                <td>Store3@outlook.com</td>
+                <td>50</td>
+                <td>47</td>
+            </tr>
+        </table>
+
+    </div>
+</main>
+
+<div class="big_container">
+
+    <div class="store_vehicles_containers">
+        <img class = "store_vehicles_img" src = "{% static 'images/store.jpg' %}"> 
+    </div>
+    <div class = "store_vehicles_containers2">
+        <p style="text-align:center; padding-top:15%; font-size:40px;"><em>Please Welcome our newest store!</em></p>
+    </div>
+
+</div>
+<footer>
+<p> &copy; 2018 CRC </p>   
+</footer>
+<script>
+    function sortTable(num) 
+    {
+        var table, rows, switching,x, y, z, do_anything, direction, switchcount = 0;
+  
+        table = document.getElementById("tables");
+        switching = true;
+        direction = "asc"; 
+
+        while (switching == true) 
+        {
+            switching = false;
+            rows = table.rows;
+            for (z = 1; z < (rows.length - 1); z++) 
+            {
+                do_anything = false;
+                x = rows[z].getElementsByTagName("td")[num];
+                y = rows[z + 1].getElementsByTagName("td")[num];
+                if (direction == "asc") 
+                {
+                    if ((x.innerHTML.toLowerCase()) > (y.innerHTML.toLowerCase())) 		  
+                    {
+                        do_anything = true;
+                        break;
+                    }
+                } 
+                else if (direction == "desc") 
+                {
+                    if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) 
+                    {
+                        do_anything = true;
+                        break;
+                    }
+                }
+            }
+            if (do_anything == true) 
+            {
+                rows[z].parentNode.insertBefore(rows[z + 1], rows[z]);
+                switching = true;
+                switchcount ++;      
+            }
+            else
+            {
+                if (switchcount == 0 && direction == "asc") 
+                {
+                    direction = "desc";
+                    switching = true;
+                }
+            }
+        }
+    }
+</script>
+</body>
+</html>
+
+<!-- images used on this page were:
+1. http://superstore-nbc.wikia.com/wiki/Aftermath -->

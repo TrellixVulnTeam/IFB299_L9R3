@@ -1,0 +1,140 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="{% static 'css/stylesheet2.css' %}">
+</head>
+<body>
+    <Enav>
+        <ul>
+            <li><a href = "{% url 'home_page' %}"><img class = "logo" src = "{% static 'images/logo.png' %}"> </a></li>
+            <li> <a href = "{% url 'customer_results' %}"> Customers </a></li>
+            <li> <a href = "{% url 'vehicles' %}"> Vehicles </a></li>
+            <li> <a href = "{% url 'stores' %}"> Stores</a></li>
+            <li> <a href = "{% url 'reports' %}"> Reports</a></li>
+            <li> <a href = "{% url 'home_page' %}"> Sign-out </a></li>
+        </ul>
+    </Enav>
+    <br>
+    <br>
+    <br>
+    <h1>Employee Dashboard</h1>
+<main class = "everyother_page">
+    <div class = "white_space_employees">
+        <h2>Vehicles</h2>
+        <table class = "report" id = "tables">
+            <tr>
+                    <th onclick="sortTable(0)" style="cursor:pointer" >Vehicle Make</th>
+                    <th onclick="sortTable(1)" style="cursor:pointer"> Vehicle Model</th>
+                    <th onclick="sortTable(2)" style="cursor:pointer">Store</th>
+                    <th onclick="sortTable(3)" style="cursor:pointer"> Rego #</th>
+                    <th onclick="sortTable(4)" style="cursor:pointer"> Status</th>
+            </tr>
+            <tr>
+                <td>Holden</td>
+                <td>Astra</td>
+                <td>Store 3</td>
+                <td>123ABC</td>
+                <td>Returned</td>
+            </tr>
+            <tr>
+                <td>Mitsubishi</td>
+                <td>Mirage</td>
+                <td>Store 3</td>
+                <td>987JKL</td>
+                <td>Returned</td>
+            </tr>
+            <tr>
+                <td>Porsche</td>
+                <td>718</td>
+                <td>Store 1</td>
+                <td>440RIC</td>
+                <td>Returned Pending</td>
+            </tr>
+            <tr>
+                <td>Lexus</td>
+                <td>LS500</td>
+                <td>Store 2</td>
+                <td>890LOL</td>
+                <td>Rented</td>
+            </tr>
+            <tr>
+                <td>Hyundai</td>
+                <td>i30</td>
+                <td>Store 1</td>
+                <td>157SLP</td>
+                <td>Rented</td>
+            </tr>
+        </table>
+    </div> 
+</main>
+<div class ="big_container">
+    <div class = "store_vehicles_containers">
+        <img style="height:80%; padding-top:50px;" class = "store_vehicles_img" src = "{% static 'images/car2.jpg' %}">
+    </div>
+
+    <div class = "store_vehicles_containers2">
+        <p style="text-align:center; padding-top:15%; font-size:40px;"><em>New Vehicles now in stock!</em></p>
+
+    </div>
+</div>
+<footer>
+<p> &copy; 2018 CRC </p>   
+</footer>
+<script>
+    function sortTable(num) 
+    {
+        var table, rows, switching,x, y, z, do_anything, direction, switchcount = 0;
+  
+        table = document.getElementById("tables");
+        switching = true;
+        direction = "asc"; 
+
+        while (switching == true) 
+        {
+            switching = false;
+            rows = table.rows;
+            for (z = 1; z < (rows.length - 1); z++) 
+            {
+                do_anything = false;
+                x = rows[z].getElementsByTagName("td")[num];
+                y = rows[z + 1].getElementsByTagName("td")[num];
+                if (direction == "asc") 
+                {
+                    if ((x.innerHTML.toLowerCase()) > (y.innerHTML.toLowerCase())) 		  
+                    {
+                        do_anything = true;
+                        break;
+                    }
+                } 
+                else if (direction == "desc") 
+                {
+                    if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) 
+                    {
+                        do_anything = true;
+                        break;
+                    }
+                }
+            }
+            if (do_anything == true) 
+            {
+                rows[z].parentNode.insertBefore(rows[z + 1], rows[z]);
+                switching = true;
+                switchcount ++;      
+            }
+            else
+            {
+                if (switchcount == 0 && direction == "asc") 
+                {
+                    direction = "desc";
+                    switching = true;
+                }
+            }
+        }
+    }
+</script>
+</body>
+</html>
+<!-- 
+Websites used for this webpage
+1. https://www.caranddriver.com/reviews/2017-audi-r8-spyder-instrumented-test-review -->

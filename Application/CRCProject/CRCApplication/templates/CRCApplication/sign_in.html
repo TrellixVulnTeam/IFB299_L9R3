@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="{% static 'css/stylesheet2.css' %}">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href = "{% url 'home_page' %}"><img class = "logo" src = "{% static 'images/logo.png' %}"> </a></li>
+            <li> <a href = "{% url 'about' %}"> About </a></li>
+            <li> <a href = "{% url 'contact' %}"> Contact </a></li>
+            <li> <a href = "{% url 'FAQ' %}"> FAQ</a></li>
+            <li> <a href = "{% url 'sign_in' %}"> Sign-in </a></li>
+        </ul>
+    </nav>
+
+<main class = "main_home"> 
+    <div class ="tab">
+        <button class = "tablinks" onclick="Options(event,'Customer')" id="default">Customer</button>
+        <button class = "tablinks" onclick="Options(event,'Employee')">Employee</button>
+    </div>
+    <div id = "Customer" class = "tabcontent">
+        <h3>Customer Sign-in</h3>
+        <input class = "whole_length_form" type ="search" name = "Customer_Username" placeholder="Please enter your username">
+        <input class = "whole_length_form" type="password" name = "Customer_Password" placeholder="Please enter your password">
+        <button class = "submit_search" type = "submit">Submit</button>    </div>
+    <div id="Employee" class = "tabcontent">
+        <h3>Employee Sign-in</h3>
+        <input class = "whole_length_form" type ="search" name = "Employee_Username" placeholder="Please enter your username">
+        <input class = "whole_length_form" type="password" name = "Employee_Password" placeholder="Please enter your password">
+        <a href = "{% url 'employee_homescreen' %}"><button class = "submit_search" type = "submit">Submit</button></a>
+    </div>
+</main>
+<div class = "specific_spacing"></div>
+<footer>
+<p> &copy; 2018 CRC </p>   
+</footer>
+<script>
+    function Options(evt, customer_employee)
+    {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++)
+        {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) 
+        {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(customer_employee).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+    document.getElementById("default").click();
+</script>
+</body>
+</html>

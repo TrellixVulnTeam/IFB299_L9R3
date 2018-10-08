@@ -17,5 +17,5 @@ from django.contrib import admin
 from django.conf.urls import include, url
 
 urlpatterns = [
-    url(r'^index/', include('CRCApplication.urls')),
+    url(r'', include('CRCApplication.urls')),
 ]

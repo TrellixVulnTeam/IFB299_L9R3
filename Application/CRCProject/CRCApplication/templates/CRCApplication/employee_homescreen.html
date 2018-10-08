@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="{% static 'css/stylesheet2.css' %}">
+</head>
+<body>
+    <Enav>
+        <ul>
+            <li><a href = "{% url 'home_page' %}"><img class = "logo" src = "{% static 'images/logo.png' %}"> </a></li>
+            <li> <a href = "{% url 'customer_results' %}"> Customers </a></li>
+            <li> <a href = "{% url 'vehicles' %}"> Vehicles </a></li>
+            <li> <a href = "{% url 'stores' %}"> Stores</a></li>
+            <li> <a href = "{% url 'reports' %}"> Reports</a></li>
+            <li> <a href = "{% url 'home_page' %}"> Sign-out </a></li>
+        </ul>
+    </Enav>
+    <br>
+    <br>
+    <h1>Employee Dashboard</h1>
+<main class = "main_home"> 
+    <div class = "tab">
+        <button class = "tablinks" onclick="Options(event,'Vehicles')" id="default">Vehicles</button>
+        <button class = "tablinks" onclick="Options(event,'Customers')">Customers</button>
+    </div>
+
+    <div id = "Vehicles" class = "tabcontent">
+        <h3>Vehicle Search</h3>
+        <input class = "whole_length_form" type = "search" name = "Vehicle_entered" placeholder="Search Vehicle Information....">
+        <button class = "submit_search" type = "submit">Submit</button>
+    </div>
+
+    <div id = "Customers" class = "tabcontent">
+        <h3>Customer Search</h3>
+        <input class = "whole_length_form" type = "search" name="customer_search" placeholder="Search Customer Information....">
+        <button class = "submit_search" type = "submit">Submit</button>
+    </div>
+</main>
+<div class = "big_container">
+    <!-- <div class = "little_containers" style = "background-color:rgba(255,255,255,0)">
+        <img class = "four_images" src = "business_person.png">
+    </div> -->
+    <div class = "pad"></div>
+    <div class = "quote"><em>"Strive to do better!"</em> </div>
+</div>
+<footer>
+<p> &copy; 2018 CRC </p>   
+</footer>
+<script>
+    function Options(evt, customer_employee)
+    {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++)
+        {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) 
+        {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(customer_employee).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+    document.getElementById("default").click();
+</script>
+</body>
+</html>
+
+<!-- images that have been used for this page
+1. https://mbtskoudsalg.com/explore/pow!-png-clipart/ -->
