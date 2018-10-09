@@ -97,7 +97,7 @@ class Cars(models.Model):
 
 
 class Customers(models.Model):
-    customer_id = models.IntegerField(db_column='Customer_ID')  # Field name made lowercase.
+    customer_id = models.IntegerField(db_column='Customer_ID', primary_key=True)  # Field name made lowercase.
     customer_name = models.CharField(db_column='Customer_Name', max_length=16)  # Field name made lowercase.
     customer_phone = models.CharField(db_column='Customer_Phone', max_length=14)  # Field name made lowercase.
     customer_address = models.CharField(db_column='Customer_Address', max_length=35)  # Field name made lowercase.
@@ -155,7 +155,7 @@ class DjangoSession(models.Model):
 
 
 class Orders(models.Model):
-    orderid = models.IntegerField(db_column='OrderID')  # Field name made lowercase.
+    orderid = models.IntegerField(db_column='OrderID', primary_key=True)  # Field name made lowercase.
     order_createdate = models.DateField(db_column='Order_CreateDate')  # Field name made lowercase.
     customer_id = models.IntegerField(db_column='Customer_ID')  # Field name made lowercase.
     car_id = models.IntegerField(db_column='Car_ID')  # Field name made lowercase.
@@ -170,7 +170,7 @@ class Orders(models.Model):
 
 
 class Stores(models.Model):
-    store_id = models.IntegerField(db_column='Store_ID')  # Field name made lowercase.
+    store_id = models.IntegerField(db_column='Store_ID', primary_key=True)  # Field name made lowercase.
     store_name = models.CharField(db_column='Store_Name', max_length=50)  # Field name made lowercase.
     store_address = models.CharField(db_column='Store_Address', max_length=255)  # Field name made lowercase.
     store_phone = models.CharField(db_column='Store_Phone', max_length=18)  # Field name made lowercase.
