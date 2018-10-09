@@ -1,5 +1,8 @@
-from django.conf.urls import url
-from CRCApplication import views 
+from django.conf.urls import url, include
+from CRCApplication import views
+from django.contrib.auth.views import LoginView
+from django.contrib import admin
+admin.autodiscover()
 
 urlpatterns = [
     url(r'^$', views.home_page, name='home_page'),
@@ -12,4 +15,5 @@ urlpatterns = [
     url(r'^sign_in/$', views.sign_in, name='sign_in'),
     url(r'^stores/$', views.stores, name='stores'),
     url(r'^vehicles/$', views.vehicles, name='vehicles'),
+    url(r'^login/$', LoginView.as_view(template_name='CRCApplication/sign_in.html'), name='login'),
 ]

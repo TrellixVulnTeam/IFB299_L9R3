@@ -27,9 +27,11 @@
         <button class = "submit_search" type = "submit">Submit</button>    </div>
     <div id="Employee" class = "tabcontent">
         <h3>Employee Sign-in</h3>
-        <input class = "whole_length_form" type ="search" name = "Employee_Username" placeholder="Please enter your username">
-        <input class = "whole_length_form" type="password" name = "Employee_Password" placeholder="Please enter your password">
-        <a href = "{% url 'employee_homescreen' %}"><button class = "submit_search" type = "submit">Submit</button></a>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="submit_search">Login</button>
+        </form>
     </div>
 </main>
 <div class = "specific_spacing"></div>
