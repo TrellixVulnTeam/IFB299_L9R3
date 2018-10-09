@@ -60,7 +60,7 @@ DROP TABLE IF EXISTS `customers`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `customers` (
-  `Customer_ID` int(11) NOT NULL,
+  `Customer_ID` int(11) NOT NULL AUTO_INCREMENT,
   `Customer_Name` varchar(16) CHARACTER SET latin1 COLLATE latin1_spanish_ci NOT NULL,
   `Customer_Phone` varchar(14) NOT NULL,
   `Customer_Address` varchar(35) NOT NULL,
@@ -89,7 +89,7 @@ DROP TABLE IF EXISTS `orders`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `orders` (
-  `OrderID` int(11) NOT NULL,
+  `OrderID` int(11) NOT NULL AUTO_INCREMENT,
   `Order_CreateDate` date NOT NULL,
   `Customer_ID` int(11) NOT NULL,
   `Car_ID` int(11) NOT NULL,
@@ -119,7 +119,7 @@ DROP TABLE IF EXISTS `stores`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `stores` (
-  `Store_ID` int(11) NOT NULL,
+  `Store_ID` int(11) NOT NULL AUTO_INCREMENT,
   `Store_Name` varchar(50) NOT NULL,
   `Store_Address` varchar(255) NOT NULL,
   `Store_Phone` varchar(18) NOT NULL,
