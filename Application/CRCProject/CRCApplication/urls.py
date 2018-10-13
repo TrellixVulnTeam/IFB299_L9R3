@@ -12,8 +12,7 @@ urlpatterns = [
     url(r'^employee_homescreen/$', views.employee_homescreen, name='employee_homescreen'),
     url(r'^FAQ/$', views.FAQ, name='FAQ'),
     url(r'^reports/$', views.reports, name='reports'),
-    url(r'^sign_in/$', views.sign_in, name='sign_in'),
     url(r'^stores/$', views.stores, name='stores'),
     url(r'^vehicles/$', views.vehicles, name='vehicles'),
-    url(r'^login/$', LoginView.as_view(template_name='CRCApplication/sign_in.html'), name='login'),
+    url(r'^sign_in/$', LoginView.as_view(template_name='CRCApplication/sign_in.html'), name='sign_in'),
 ]
