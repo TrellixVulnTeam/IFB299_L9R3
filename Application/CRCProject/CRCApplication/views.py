@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views import View
 from django.http import HttpResponse, HttpRequest
+from django.contrib.auth.models import User
 
 def home_page(request):
     return render(request, 'CRCApplication/home_page.html')
@@ -15,7 +16,8 @@ def customer_results(request):
     return render(request, 'CRCApplication/customer_results.html')
 
 def employee_homescreen(request):
-    return render(request, 'CRCApplication/employee_homescreen.html')
+    args = {'user': request.user}
+    return render(request, 'CRCApplication/employee_homescreen.html', args)
 
 def FAQ(request):
     return render(request, 'CRCApplication/FAQ.html')

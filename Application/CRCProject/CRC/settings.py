@@ -48,6 +48,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'CRC.middleware.LoginRequiredMiddleware',
 ]
 
 ROOT_URLCONF = 'CRC.urls'
@@ -126,5 +127,16 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
+
+LOGIN_URL = '/sign_in/'
+
+LOGIN_EXEMPT_URLS = (
+    r'^sign_in/$',
+    r'^home/$',
+    r'^about/$',
+    r'^contact/$',
+    r'^FAQ/$',
+    r'^logout/$',
+)
 
 LOGIN_REDIRECT_URL = '/employee_homescreen/'
