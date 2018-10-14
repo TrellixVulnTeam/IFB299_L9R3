@@ -17,7 +17,6 @@ def customer_results(request):
 
 def employee_homescreen(request):
     args = {'user': request.user}
-    print(args)
     return render(request, 'CRCApplication/employee_homescreen.html', args)
 
 def FAQ(request):

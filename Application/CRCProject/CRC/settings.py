@@ -131,10 +131,12 @@ STATICFILES_DIRS = [
 LOGIN_URL = '/sign_in/'
 
 LOGIN_EXEMPT_URLS = (
-    r'^home_page/$',
+    r'^sign_in/$',
+    r'^home/$',
     r'^about/$',
     r'^contact/$',
     r'^FAQ/$',
+    r'^logout/$',
 )
 
 LOGIN_REDIRECT_URL = '/employee_homescreen/'
