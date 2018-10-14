@@ -24,17 +24,18 @@
         <button class = "tablinks" onclick="Options(event,'Customers')">Customers</button>
     </div>
 
-    <div id = "Vehicles" class = "tabcontent">
+    <form id = "Vehicles" class = "tabcontent" method = 'GET'>
         <h3>Vehicle Search</h3>
-        <input class = "whole_length_form" type = "search" method = 'GET' name = "Vehicle_entered" placeholder="Search Vehicle Information....">
+        <input class = "whole_length_form" type = "search"  name = "Vehicle_entered" placeholder="Search Vehicle Information....">
         <button class = "submit_search" type = "submit">Submit</button>
-    </div>
+    </form>
 
-    <div id = "Customers" class = "tabcontent">
+    <form id = "Customers" class = "tabcontent" method = 'GET'>
         <h3>Customer Search</h3>
-        <input class = "whole_length_form" type = "search" method = 'GET' name="customer_search" placeholder="Search Customer Information...." >
+        <input class = "whole_length_form" type = "search"  name="customer_search" placeholder="Search Customer Information...." >
         <button class = "submit_search" type = "submit">Submit</button>
-    </div>
+    </form> 
+    <!-- Changed these from divs to forms... -->
 </main>
 <div class = "big_container">
     <!-- <div class = "little_containers" style = "background-color:rgba(255,255,255,0)">
