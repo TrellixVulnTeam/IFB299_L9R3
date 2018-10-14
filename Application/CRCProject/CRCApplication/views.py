@@ -33,3 +33,28 @@ def stores(request):
 
 def vehicles(request):
     return render(request, 'CRCApplication/vehicles.html')
+
+
+
+#Attempt 1....
+def customer_search(request):        
+    if request.method == 'GET':      
+        output =  request.GET.get('customer_search')      
+        try:
+            status = Add_prod.objects.filter(output__icontains = output1) 
+        return render(request,"employee_homescreen.html",{"search":status}) #OR IS IT MEANT TO BE CRCApplication/employee_homescreen.html
+    else:
+        return render(request,"employee_homescreen.html",{})
+
+def Vehicle_entered(request):        
+    if request.method == 'GET':       
+        output =  request.GET.get('Vehicle_entered')       
+        try:
+            status = Add_prod.objects.filter(output__icontains=output2) 
+        return render(request,"employee_homescreen.html",{"search":status}) # this here could need to be the databse table name..??
+    else:
+        return render(request,"employee_homescreen.html",{})
+
+
+
+#ATTEMPT 2
