@@ -1,5 +1,6 @@
 from django.conf.urls import url, include
 from CRCApplication import views
+from CRCApplication.views import *
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib import admin
 admin.autodiscover()
@@ -8,7 +9,7 @@ urlpatterns = [
     url(r'^home/$', views.home_page, name='home_page'),
     url(r'^about/$', views.about, name='about'),
     url(r'^contact/$', views.contact, name='contact'),
-    url(r'^customer_results/$', views.customer_results, name='customer_results'),
+    url(r'^customer_results/$', CustomerResults.as_view(), name='customer_results'),
     url(r'^employee_homescreen/$', views.employee_homescreen, name='employee_homescreen'),
     url(r'^FAQ/$', views.FAQ, name='FAQ'),
     url(r'^reports/$', views.reports, name='reports'),
