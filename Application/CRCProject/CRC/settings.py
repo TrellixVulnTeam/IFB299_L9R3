@@ -131,6 +131,7 @@ STATICFILES_DIRS = [
 LOGIN_URL = '/sign_in/'
 
 LOGIN_EXEMPT_URLS = (
+    r'^$',
     r'^sign_in/$',
     r'^home/$',
     r'^about/$',
