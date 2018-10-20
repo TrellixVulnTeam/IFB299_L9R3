@@ -3,7 +3,7 @@ from CRCApplication.models import *
 
 class CustomerSearch(forms.Form):
     customerId = forms.CharField(required = False, label = 'ID')
-    name = forms.CharField(label = 'Name')
+    name = forms.CharField(required = False, label = 'Name')
     phone = forms.CharField(required = False, label = 'Phone Number')
     address = forms.CharField(required = False, label = 'Address')
     occupation = forms.CharField(required = False, label = 'Occupation')
