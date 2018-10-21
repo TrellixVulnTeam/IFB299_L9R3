@@ -17,6 +17,31 @@ from django.views.generic.detail import DetailView
 def home_page(request):
     return render(request, 'CRCApplication/home_page.html')
 
+
+
+class CustomerCar(FormView):
+    def get(self, request):
+        form = CCarSearch(self.request.GET or None)
+        context = {'form':form}
+
+        if form.is_valid():
+            makename = self.request.GET.get('makename')
+            model = self.request.GET.get('model')
+            seriesyear = self.request.GET.get('seriesyear')
+            enginesize = self.request.GET.get('enginesize')
+            fuelsystem = self.request.GET.get('fuelsystem')
+            seatingcapacity = self.request.GET.get('seatingcapacity')
+            standardtransmission = self.request.GET.get('standardtransmission')
+            bodytype = self.request.GET.get('bodytype')
+
+            results = Cars.objects.filter(Q(car_makename_icontains = makename) & Q(car_model_icontains = model) & Q(car_seriesyear_icontains = seriesyear) & Q(car_enginesize_icontains = enginesize) & Q(car_fuelsystem_icontains = fuelsystem) & Q(car_seatingcapacity_icontains = seatingcapacity) & Q(car_standardtransmission_icontains = standardtransmission) & Q(car_bodytype_icontains = bodytype))
+            carMake = Cars.objects.filter(Q(car_makename_icontains = makename) & Q(car_model_icontains = model) & Q(car_seriesyear_icontains = seriesyear) & Q(car_enginesize_icontains = enginesize) & Q(car_fuelsystem_icontains = fuelsystem) & Q(car_seatingcapacity_icontains = seatingcapacity) & Q(car_standardtransmission_icontains = standardtransmission) & Q(car_bodytype_icontains = bodytype)).values_list('car_makename')
+            context = {'form':form, 'results': results} 
+            return render (request, 'CRCApplication/CCAR_results.html', context)
+        else
+            return render(request, 'CRCApplication/CCAR_results.html', context)
+
+
 def about(request):
     return render(request, 'CRCApplication/about.html')
 
@@ -49,6 +74,37 @@ def employee_homescreen(request):
     args = {'user': request.user}
     return render(request, 'CRCApplication/employee_homescreen.html', args)
 
+
+class EmployeeCar(FormView):
+    def get(self, request):
+        form = ECarSearch(self.request.GET or None)
+        context = {'form':form}
+
+        if form.is_valid():
+            carId = self.request.GET.get('carId')
+            makename = self.request.GET.get('makename')
+            model = self.request.GET.get('model')
+            series = self.request.GET.get('series')
+            seriesyear = self.request.GET.get('seriesyear')
+            pricenew = self.request.GET.get('pricenew')
+            enginesize = self.request.GET.get('enginesize')
+            fuelsystem = self.request.GET.get('fuelsystem')
+            tankcapacity = self.request.GET.get('tankcapacity')
+            power = self.request.GET.get('power')
+            seatingcapacity = self.request.GET.get('seatingcapacity')
+            standardtransmission = self.request.GET.get('standardtransmission')
+            bodytype = self.request.GET.get('bodytype')
+            drive = self.request.GET.get('drive')
+            wheelbase = self.request.GET.get('wheelbase')
+
+
+            results = Cars.objects.filter(Q(car_id_icontains = carId) & Q(car_makename_icontains = makename) & Q(car_model_icontains = model) & Q(car_series_icontains = series) & Q(car_seriesyear_icontains = seriesyear) & Q(car_pricenew_icontains = pricenew) & Q(car_enginesize_icontains = enginesize) & Q(car_fuelsystem_icontains = fuelsystem) & Q(car_tankcapacity_icontains = tankcapacity) & Q(car_power_icontains = power) & Q(car_seatingcapacity_icontains = seatingcapacity) & Q(car_standardtransmission_icontains = standardtransmission) & Q(car_bodytype_icontains = bodytype) & Q(car_drive_icontains = drive) & Q(car_wheelbase_icontains = wheelbase))
+            carMake = Cars.objects.filter((Q(car_id_icontains = carId) & Q(car_makename_icontains = makename) & Q(car_model_icontains = model) & Q(car_series_icontains = series) & Q(car_seriesyear_icontains = seriesyear) & Q(car_pricenew_icontains = pricenew) & Q(car_enginesize_icontains = enginesize) & Q(car_fuelsystem_icontains = fuelsystem) & Q(car_tankcapacity_icontains = tankcapacity) & Q(car_power_icontains = power) & Q(car_seatingcapacity_icontains = seatingcapacity) & Q(car_standardtransmission_icontains = standardtransmission) & Q(car_bodytype_icontains = bodytype) & Q(car_drive_icontains = drive) & Q(car_wheelbase_icontains = wheelbase)).values_list('carId')
+            context = {'form':form, 'results': results} 
+            return render (request, 'CRCApplication/ECAR_results.html', context)
+        else
+            return render(request, 'CRCApplication/ECAR_results.html', context)
+
 def FAQ(request):
     return render(request, 'CRCApplication/FAQ.html')
 
@@ -63,132 +119,3 @@ def stores(request):
 
 def vehicles(request):
     return render(request, 'CRCApplication/vehicles.html')
-
-
-
-#Attempt 1....
-# def customer_search(request):        
-#     if request.method == 'GET':      
-#         output =  request.GET.get('customer_search')      
-#         try:
-#             status = Add_prod.objects.filter(customer_id__icontains = output1) 
-#         return render(request,"employee_homescreen.html",{"search":status}) #OR IS IT MEANT TO BE CRCApplication/employee_homescreen.html
-#     else:
-#         return render(request,"employee_homescreen.html",{})
-
-# def Vehicle_entered(request):        
-#     if request.method == 'GET':       
-#         output =  request.GET.get('Vehicle_entered')       
-#         try:
-#             status = Add_prod.objects.filter(customer_id__icontains=output2) 
-#         return render(request,"employee_homescreen.html",{"search":status}) # this here could need to be the databse table name..??
-#     else:
-#         return render(request,"employee_homescreen.html",{})
-
-#Attempt 1 came from https://stackoverflow.com/questions/38006125/how-to-implement-search-function-in-django
-
-
-
-#ATTEMPT 2 came from https://www.youtube.com/watch?v=eyAIAZr5Q3w
-
-#Vehicle query
-# def Vehicle_Query(request):
-#     V_query = request.GET.get ("Vehicle_entered")
-#     queryset_list = ()
-#     if V_query:
-#         queryset_list = queryset_list.filter(
-#             Q(customer_id__icontains=V_query) |
-#             Q(customer_name__icontains=V_query) |
-#             Q(customer_phone__icontains=V_query) |
-#             Q(customer_address__icontains=V_query) |
-#             Q(customer_birthday__icontains=V_query) |
-#             Q(customer_occupation__icontains=V_query) |
-#             Q(customer_gender__icontains=V_query)
-#             ).distinct
-#     return queryset_list
-#         #test to make sure this works then the code to put it in a table should be below.
-
-# #Customer Query
-# C_query = request.GET.get ("customer_search")
-# if C_query:
-#     queryset_list = queryset_list.filter(
-#         Q(car_id__icontains=C_query) |
-#         Q(car_makename__icontains=C_query) |
-#         Q(car_model__icontains=C_query) |
-#         Q(car_series__icontains=C_query) |
-#         Q(car_seriesyear__icontains=C_query) |
-#         Q(car_pricenew__icontains=C_query) |
-#         Q(car_enginesize__icontains=C_query) |
-#         Q(car_fuelsystem__icontains=C_query) |
-#         Q(car_tankcapacity__icontains=C_query) |
-#         Q(car_power__icontains=C_query) |
-#         Q(car_seatingcapacity__icontains=C_query) |
-#         Q(car_standardtransmission__icontains=C_query) |
-#         Q(car_bodytype__icontains =C_query) |
-#         Q(car_drive__icontains=C_query) |
-#         Q(car_wheelbase__icontains=C_query)
-#         ).distinct
-#     return queryset_list
-
-
-
-# If everything works then implement the following code so that instead of the output being a list it will be a table.
-
-# {% if queryset_list %}
-# <tr>
-#     <th> customer ID </th>
-#     <th> Name </th>
-#     <th> Phone </th>
-#     <th> Address </th>
-#     <th> D.O.B </th>
-#     <th> Occupation </th>
-#     <th> Gender </th>
-# </tr>
-# <tr>
-#     <td> </td>
-#     <td> </td>
-#     <td> </td>
-#     <td> </td>
-#     <td> </td>
-#     <td> </td>
-#     <td> </td>
-# </tr>
-
-# {% endif %}
-
-# {% if queryset_list %}
-# <tr>
-#     <th> Car ID </th>
-#     <th> Make </th>
-#     <th> Model </th>
-#     <th> Series </th>
-#     <th> Series Year </th>
-#     <th> Price </th>
-#     <th> Engine Size </th>
-#     <th> Fuel System </th>
-#     <th> Tank Capacity </th>
-#     <th> Power </th>
-#     <th> Seating Capacity </th>
-#     <th> Transmission Type </th>
-#     <th> Body Type </th>
-#     <th> Drive </th>
-#     <th> Wheel Base </th>
-# </tr>
-# <tr>
-#     <td> </td>
-#     <td> </td>
-#     <td> </td>
-#     <td> </td>
-#     <td> </td>
-#     <td> </td>
-#     <td> </td>
-#     <td> </td>
-#     <td> </td>
-#     <td> </td>
-#     <td> </td>
-#     <td> </td>
-#     <td> </td>
-#     <td> </td>
-#     <td> </td>
-# </tr>
-# {% endif %}

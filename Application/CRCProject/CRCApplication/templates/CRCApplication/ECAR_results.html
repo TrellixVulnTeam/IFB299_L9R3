@@ -1,0 +1,139 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="{% static 'css/stylesheet2.css' %}">
+</head>
+<body>
+    <Enav>
+        <ul>
+            <li><a href = "{% url 'home_page' %}"><img class = "logo" src = "{% static 'images/logo.png' %}"> </a></li>
+            <li> <a href = "{% url 'customer_results' %}"> Customers </a></li>
+            <li> <a href = "{% url 'vehicles' %}"> Vehicles </a></li>
+            <li> <a href = "{% url 'stores' %}"> Stores</a></li>
+            <li> <a href = "{% url 'reports' %}"> Reports</a></li>
+            <li> <a href = "{% url 'logout' %}"> Sign-out </a></li>
+        </ul>
+    </Enav>
+    <br>
+    <br>
+    <h1> Employee Dashboard </h1>
+<main class ="everyother_page">
+        <div class = "white_space_employees">
+            <h3>Vehicle results</h3>
+            <br>
+            <form method="GET">
+                {{form}}
+                <button class="button" type="submit">Submit</button>
+            </form>
+            <br>
+            
+            <table class="results" id = "all_Tables">
+                    
+                <tr>
+                    <th onclick="sortTable(0)">ID</th>
+                    <th onclick="sortTable(1)">Make Name</th>
+                    <th onclick="sortTable(2)">Model</th>
+                    <th onclick="sortTable(3)">Series</th>
+                    <th onclick="sortTable(4)">Series Year</th>
+                    <th onclick="sortTable(5)">Price New</th>
+                    <th onclick="sortTable(6)">Engine Size</th>
+                    <th onclick="sortTable(7)">Fuel System</th>
+                    <th onclick="sortTable(8)">Tank Capacity</th>
+                    <th onclick="sortTable(9)">Power</th>
+                    <th onclick="sortTable(10)">Seating Capacity</th>
+                    <th onclick="sortTable(11)">Standard Transmission</th>
+                    <th onclick="sortTable(12)">Body Type</th>
+                    <th onclick="sortTable(13)">Drive</th>
+                    <th onclick="sortTable(14)">Wheel Base</th>
+
+                </tr>
+                {% for row in results %}
+                <tr>
+                    <td>{{row.car_id}}</td>
+                    <td>{{row.car_makename}}</td>
+                    <td>{{row.car_model}}</td>
+                    <td>{{row.car_series}}</td>
+                    <td>{{row.car_seriesyear}}</td>
+                    <td>{{row.car_pricenew}}</td>
+                    <td>{{row.car_enginesize}}</td>
+                    <td>{{row.car_fuelsystem}}</td>
+                    <td>{{row.car_tankcapacity}}</td>
+                    <td>{{row.car_power}}</td>
+                    <td>{{row.car_seating_capacity}}</td>
+                    <td>{{row.car_standardtransmission}}</td>
+                    <td>{{row.car_bodytype}}</td>
+                    <td>{{row.car_drive}}</td>
+                    <td>{{row.car_wheelbase}}</td>
+                    
+                </tr>
+                {% empty %}
+                <tr>
+                    <td>No Results Found</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </main>
+    <div class = "about_spacing"></div>
+<footer>
+<p> &copy; 2018 CRC </p>   
+</footer>
+
+
+    <script>
+        function sortTable(num) 
+        {
+            var table, rows, switching,x, y, z, do_anything, direction, switchcount = 0;
+    
+            table = document.getElementById("all_Tables");
+            switching = true;
+            direction = "asc"; 
+
+            while (switching == true) 
+            {
+                switching = false;
+                rows = table.rows;
+                for (z = 1; z < (rows.length - 1); z++) 
+                {
+                    do_anything = false;
+                    x = rows[z].getElementsByTagName("td")[num];
+                    y = rows[z + 1].getElementsByTagName("td")[num];
+                    if (direction == "asc") 
+                    {
+                        if ((x.innerHTML.toLowerCase()) > (y.innerHTML.toLowerCase())) 		  
+                        {
+                            do_anything = true;
+                            break;
+                        }
+                    } 
+                    else if (direction == "desc") 
+                    {
+                        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) 
+                        {
+                            do_anything = true;
+                            break;
+                        }
+                    }
+                }
+                if (do_anything == true) 
+                {
+                    rows[z].parentNode.insertBefore(rows[z + 1], rows[z]);
+                    switching = true;
+                    switchcount ++;      
+                }
+                else
+                {
+                    if (switchcount == 0 && direction == "asc") 
+                    {
+                        direction = "desc";
+                        switching = true;
+                    }
+                }
+            }
+        }
+    </script>
+
+
+</body>
+</html>
