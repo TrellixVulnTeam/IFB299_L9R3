@@ -34,11 +34,11 @@ class CustomerCar(FormView):
             standardtransmission = self.request.GET.get('standardtransmission')
             bodytype = self.request.GET.get('bodytype')
 
-            results = Cars.objects.filter(Q(car_makename_icontains = makename) & Q(car_model_icontains = model) & Q(car_seriesyear_icontains = seriesyear) & Q(car_enginesize_icontains = enginesize) & Q(car_fuelsystem_icontains = fuelsystem) & Q(car_seatingcapacity_icontains = seatingcapacity) & Q(car_standardtransmission_icontains = standardtransmission) & Q(car_bodytype_icontains = bodytype))
-            carMake = Cars.objects.filter(Q(car_makename_icontains = makename) & Q(car_model_icontains = model) & Q(car_seriesyear_icontains = seriesyear) & Q(car_enginesize_icontains = enginesize) & Q(car_fuelsystem_icontains = fuelsystem) & Q(car_seatingcapacity_icontains = seatingcapacity) & Q(car_standardtransmission_icontains = standardtransmission) & Q(car_bodytype_icontains = bodytype)).values_list('car_makename')
+            results = Cars.objects.filter(Q(car_makename__icontains = makename) & Q(car_model__icontains = model) & Q(car_seriesyear__icontains = seriesyear) & Q(car_enginesize__icontains = enginesize) & Q(car_fuelsystem__icontains = fuelsystem) & Q(car_seatingcapacity__icontains = seatingcapacity) & Q(car_standardtransmission__icontains = standardtransmission) & Q(car_bodytype__icontains = bodytype))
+            carMake = Cars.objects.filter(Q(car_makename__icontains = makename) & Q(car_model__icontains = model) & Q(car_seriesyear__icontains = seriesyear) & Q(car_enginesize__icontains = enginesize) & Q(car_fuelsystem__icontains = fuelsystem) & Q(car_seatingcapacity__icontains = seatingcapacity) & Q(car_standardtransmission__icontains = standardtransmission) & Q(car_bodytype__icontains = bodytype)).values_list('car_makename')
             context = {'form':form, 'results': results} 
             return render (request, 'CRCApplication/CCAR_results.html', context)
-        else
+        else:
             return render(request, 'CRCApplication/CCAR_results.html', context)
 
 
@@ -78,7 +78,7 @@ def employee_homescreen(request):
 class EmployeeCar(FormView):
     def get(self, request):
         form = ECarSearch(self.request.GET or None)
-        context = {'form':form}
+        context = {'form': form}
 
         if form.is_valid():
             carId = self.request.GET.get('carId')
@@ -98,11 +98,12 @@ class EmployeeCar(FormView):
             wheelbase = self.request.GET.get('wheelbase')
 
 
-            results = Cars.objects.filter(Q(car_id_icontains = carId) & Q(car_makename_icontains = makename) & Q(car_model_icontains = model) & Q(car_series_icontains = series) & Q(car_seriesyear_icontains = seriesyear) & Q(car_pricenew_icontains = pricenew) & Q(car_enginesize_icontains = enginesize) & Q(car_fuelsystem_icontains = fuelsystem) & Q(car_tankcapacity_icontains = tankcapacity) & Q(car_power_icontains = power) & Q(car_seatingcapacity_icontains = seatingcapacity) & Q(car_standardtransmission_icontains = standardtransmission) & Q(car_bodytype_icontains = bodytype) & Q(car_drive_icontains = drive) & Q(car_wheelbase_icontains = wheelbase))
-            carMake = Cars.objects.filter((Q(car_id_icontains = carId) & Q(car_makename_icontains = makename) & Q(car_model_icontains = model) & Q(car_series_icontains = series) & Q(car_seriesyear_icontains = seriesyear) & Q(car_pricenew_icontains = pricenew) & Q(car_enginesize_icontains = enginesize) & Q(car_fuelsystem_icontains = fuelsystem) & Q(car_tankcapacity_icontains = tankcapacity) & Q(car_power_icontains = power) & Q(car_seatingcapacity_icontains = seatingcapacity) & Q(car_standardtransmission_icontains = standardtransmission) & Q(car_bodytype_icontains = bodytype) & Q(car_drive_icontains = drive) & Q(car_wheelbase_icontains = wheelbase)).values_list('carId')
-            context = {'form':form, 'results': results} 
+            results = Cars.objects.filter(Q(car_id__icontains = carId) & Q(car_makename__icontains = makename) & Q(car_model__icontains = model) & Q(car_series__icontains = series) & Q(car_seriesyear__icontains = seriesyear) & Q(car_pricenew__icontains = pricenew) & Q(car_enginesize__icontains = enginesize) & Q(car_fuelsystem__icontains = fuelsystem) & Q(car_tankcapacity__icontains = tankcapacity) & Q(car_power__icontains = power) & Q(car_seatingcapacity__icontains = seatingcapacity) & Q(car_standardtransmission__icontains = standardtransmission) & Q(car_bodytype__icontains = bodytype) & Q(car_drive__icontains = drive) & Q(car_wheelbase__icontains = wheelbase))
+            carMake = Cars.objects.filter(Q(car_id__icontains = carId) & Q(car_makename__icontains = makename) & Q(car_model__icontains = model) & Q(car_series__icontains = series) & Q(car_seriesyear__icontains = seriesyear) & Q(car_pricenew__icontains = pricenew) & Q(car_enginesize__icontains = enginesize) & Q(car_fuelsystem__icontains = fuelsystem) & Q(car_tankcapacity__icontains = tankcapacity) & Q(car_power__icontains = power) & Q(car_seatingcapacity__icontains = seatingcapacity) & Q(car_standardtransmission__icontains = standardtransmission) & Q(car_bodytype__icontains = bodytype) & Q(car_drive__icontains = drive) & Q(car_wheelbase__icontains = wheelbase)).values_list('car_id')
+            
+            context = {'form': form, 'results': results} 
             return render (request, 'CRCApplication/ECAR_results.html', context)
-        else
+        else:
             return render(request, 'CRCApplication/ECAR_results.html', context)
 
 def FAQ(request):
