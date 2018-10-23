@@ -248,6 +248,23 @@ footer
     background-color:#1b75bb;
     text-align: center;
     color:white;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+/* If this doesn't work then we will use the CSS method below. */
+
+.footer_all
+{
+    height:50px;
+    background-color:#1b75bb;
+    text-align: center;
+    color:white;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
 }
 
 h2
