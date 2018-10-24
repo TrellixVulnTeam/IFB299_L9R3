@@ -65,6 +65,12 @@
         evt.currentTarget.className += " active";
     }
     document.getElementById("default").click();
+
+    function reloadTable(){
+        var container = document.getElementById("customer_table");
+        var content = container.innerHTML;
+        container.innerHTML= content;
+    }
 </script>
 </body>
 </html>

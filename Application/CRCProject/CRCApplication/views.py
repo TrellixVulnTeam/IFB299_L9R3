@@ -14,8 +14,27 @@ from django.utils import timezone
 from django.db.models import Q
 from django.views.generic.detail import DetailView
 
-def home_page(request):
-    return render(request, 'CRCApplication/home_page.html')
+class HomePage(FormView):
+    def get(self, request):
+        form = CCarSearch(self.request.GET or None)
+        context = {'form':form}
+
+        if form.is_valid():
+            makename = self.request.GET.get('makename')
+            model = self.request.GET.get('model')
+            seriesyear = self.request.GET.get('seriesyear')
+            enginesize = self.request.GET.get('enginesize')
+            fuelsystem = self.request.GET.get('fuelsystem')
+            seatingcapacity = self.request.GET.get('seatingcapacity')
+            standardtransmission = self.request.GET.get('standardtransmission')
+            bodytype = self.request.GET.get('bodytype')
+
+            results = Cars.objects.filter(Q(car_makename__icontains = makename) & Q(car_model__icontains = model) & Q(car_seriesyear__icontains = seriesyear) & Q(car_enginesize__icontains = enginesize) & Q(car_fuelsystem__icontains = fuelsystem) & Q(car_seatingcapacity__icontains = seatingcapacity) & Q(car_standardtransmission__icontains = standardtransmission) & Q(car_bodytype__icontains = bodytype))
+            carMake = Cars.objects.filter(Q(car_makename__icontains = makename) & Q(car_model__icontains = model) & Q(car_seriesyear__icontains = seriesyear) & Q(car_enginesize__icontains = enginesize) & Q(car_fuelsystem__icontains = fuelsystem) & Q(car_seatingcapacity__icontains = seatingcapacity) & Q(car_standardtransmission__icontains = standardtransmission) & Q(car_bodytype__icontains = bodytype)).values_list('car_makename')
+            context = {'form':form, 'results': results} 
+            return render (request, 'CRCApplication/home_page.html', context)
+        else:
+            return render(request, 'CRCApplication/home_page.html', context)
 
 
 
@@ -115,8 +134,28 @@ def reports(request):
 def sign_in(request):
     return render(request, 'CRCApplication/sign_in.html')
 
-def stores(request):
-    return render(request, 'CRCApplication/stores.html')
+class EmployeeStores(FormView):
+    def get(self, request):
+        form = StoreSearch(self.request.GET or None)
+        context = {'form': form}
+
+        if form.is_valid():
+            storeId = self.request.GET.get('storeId')
+            storeName = self.request.GET.get('storeName')
+            storeAddress = self.request.GET.get('storeAddress')
+            storePhone = self.request.GET.get('storePhone')
+            storeCity = self.request.GET.get('storeCity')
+            storeStateName = self.request.GET.get('storeStateName')
+
+
+
+            results = Stores.objects.filter(Q(store_id__icontains = storeId) & Q(store_name__icontains = storeName) & Q(store_address__icontains = storeAddress) & Q(store_phone__icontains = storePhone) & Q(store_city__icontains = storeCity) & Q(store_state_name__icontains = storeStateName))
+            storeIds = Stores.objects.filter(Q(store_id__icontains = storeId) & Q(store_name__icontains = storeName) & Q(store_address__icontains = storeAddress) & Q(store_phone__icontains = storePhone) & Q(store_city__icontains = storeCity) & Q(store_state_name__icontains = storeStateName)).values_list('store_id')
+            
+            context = {'form': form, 'results': results} 
+            return render (request, 'CRCApplication/stores.html', context)
+        else:
+            return render(request, 'CRCApplication/stores.html', context)
 
 def vehicles(request):
     return render(request, 'CRCApplication/vehicles.html')

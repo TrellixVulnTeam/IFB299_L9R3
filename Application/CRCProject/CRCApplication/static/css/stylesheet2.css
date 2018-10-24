@@ -72,7 +72,7 @@ h1
 	overflow: hidden;
    	border: 1px solid #ccc;
     background-color: #1b75bb;
-    width: 50%
+    width: 96.5%
 }
 
 .tab button 
@@ -105,7 +105,7 @@ h1
     border: 1px solid #ccc;
     border-top: none;
     background-color: white;
-    width:48%; 
+    width:95%; 
 }
 
 .whole_length_form
@@ -428,9 +428,9 @@ Enav a:hover:not(.active)
 
 .white_space_employees
 {
-    margin-left: 25%;
-    margin-top: -5%;
-    width: 50%;
+    margin-left: 2.5%;
+    margin-bottom: 5%;
+    width: 95%;
     height: auto;
     background-color: white;
 }

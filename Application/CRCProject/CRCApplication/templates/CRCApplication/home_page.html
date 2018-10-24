@@ -21,10 +21,43 @@
     </div>
     <div id = "Personal" class = "tabcontent">
         <h3>Personal Motor Vehicles</h3>
-        <input class = "whole_length_form" type = "search" name = "Location_entered" placeholder="Search your location">
-        <input class = "half_length_form" type = "date" name = "date_entered" >
-        <input class = "half_length_form" type = "time" name = "time_entered">
-        <button class = "submit_search"> Submit </button>
+        <br>
+        <form method="GET">
+            {{form}}
+            <button class="button" type="submit">Submit</button>
+        </form>
+        <br>
+
+         <table class="results" id = "all_Tables">
+                
+            <tr>
+                <th onclick="sortTable(0)">Make</th>
+                <th onclick="sortTable(1)">Model</th>
+                <th onclick="sortTable(2)">Year</th>
+                <th onclick="sortTable(3)">Engine Size</th>
+                <th onclick="sortTable(4)">Fuel System</th>
+                <th onclick="sortTable(5)">Seating Capacity</th>
+                <th onclick="sortTable(6)">Standard Transmission</th>
+                <th onclick="sortTable(7)">Body Type</th>
+            </tr>
+            {% for row in results %}
+            <tr>
+                <td>{{row.car_makename}}</td>
+                <td>{{row.car_model}}</td>
+                <td>{{row.car_seriesyear}}</td>
+                <td>{{row.car_enginesize}}</td>
+                <td>{{row.car_fuelsystem}}</td>
+                <td>{{row.car_seatingcapacity}}</td>
+                <td>{{row.car_standard_transmission}}</td>
+                <td>{{row.car_bodytype}}</td>
+                
+            </tr>
+            {% empty %}
+            <tr>
+                <td>No Results Found</td>
+            </tr>
+            {% endfor %}
+        </table>
     </div>
     <div id = "Commercial" class = "tabcontent">
         <h3>Commercial Motor Vehicles</h3>

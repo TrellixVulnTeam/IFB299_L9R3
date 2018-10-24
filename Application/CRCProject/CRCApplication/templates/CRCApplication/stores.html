@@ -21,43 +21,46 @@
     <h1> Employee Dashboard</h1>
 <main class="everyother_page"> 
     <div class = "white_space_employees">
-        <h2>Stores</h2>
-        <table class ="report" id = "tables">
+        <h3>Store Search</h3>
+        <br>
+        <form method="GET">
+            {{form}}
+            <button class="button" type="submit">Submit</button>
+        </form>
+        <br>
+        
+        <table class="results" id = "all_Tables">
+                
             <tr>
-                <th onclick="sortTable(0)" style="cursor:pointer" >Store</th>
-                <th onclick="sortTable(1)" style="cursor:pointer">Phone Number</th>
-                <th onclick="sortTable(2)" style="cursor:pointer">Email</th>
-                <th onclick="sortTable(3)" style="cursor:pointer">Car Stock</th>
-                <th onclick="sortTable(4)" style="cursor:pointer">Truck Stock</th>
+                <th onclick="sortTable(0)">Store ID</th>
+                <th onclick="sortTable(1)">Store Name</th>
+                <th onclick="sortTable(2)">Address</th>
+                <th onclick="sortTable(3)">Phone</th>
+                <th onclick="sortTable(4)">City</th>
+                <th onclick="sortTable(5)">State</th>
             </tr>
+            {% for row in results %}
             <tr>
-                <td>Store 1</td>
-                <td>0400 000 001</td>
-                <td>Store1@outlook.com</td>
-                <td>20</td>
-                <td>7</td>
+                <td>{{row.store_id}}</td>
+                <td>{{row.store_name}}</td>
+                <td>{{row.store_address}}</td>
+                <td>{{row.store_phone}}</td>
+                <td>{{row.store_city}}</td>
+                <td>{{row.store_state_name}}</td>
             </tr>
+            {% empty %}
             <tr>
-                <td>Store 2</td>
-                <td>0400 000 002</td>
-                <td>Store2@outlook.com</td>
-                <td>2</td>
-                <td>17</td>
+                <td>No Results Found</td>
             </tr>
-
-            <tr>
-                <td>Store 3</td>
-                <td>0400 000 003</td>
-                <td>Store3@outlook.com</td>
-                <td>50</td>
-                <td>47</td>
-            </tr>
+            {% endfor %}
         </table>
-
     </div>
+    <br>
+    <br>
+    <br>
 </main>
 
-<div class="big_container">
+<!-- <div class="big_container">
 
     <div class="store_vehicles_containers">
         <img class = "store_vehicles_img" src = "{% static 'images/store.jpg' %}"> 
@@ -66,7 +69,7 @@
         <p style="text-align:center; padding-top:15%; font-size:40px;"><em>Please Welcome our newest store!</em></p>
     </div>
 
-</div>
+</div> -->
 <footer>
 <p> &copy; 2018 CRC </p>   
 </footer>
