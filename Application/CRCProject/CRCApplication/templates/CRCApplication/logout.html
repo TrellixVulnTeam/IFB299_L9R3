@@ -14,71 +14,21 @@
             <li> <a href = "{% url 'sign_in' %}"> Sign-in </a></li>
         </ul>
     </nav>
-<main class = "main_home">
-    <div class = "tab">
-        <button class = "tablinks" onclick="Options(event, 'Personal')" id="default"> Personal </button>
-        <button class = "tablinks" onclick="Options(event, 'Commercial')"> Commercial </button>
+<main class = "everyother_page"> 
+    <div class = "white_space">
+        <h2 align="center">You have logged out</h2>
+        <br>
+        <p align="center">We hope you enjoyed using the CRC Web Application!</p>
+        <br>
+        <a href = "{% url 'home_page' %}">
+            <button class="submit_search" align="center">Home Page</button>
+        </a>
     </div>
-    <div id = "Personal" class = "tabcontent">
-        <h3>Personal Motor Vehicles</h3>
-        <input class = "whole_length_form" type = "search" name = "Location_entered" placeholder="Search your location">
-        <input class = "half_length_form" type = "date" name = "date_entered" >
-        <input class = "half_length_form" type = "time" name = "time_entered">
-        <button class = "submit_search"> Submit </button>
-    </div>
-    <div id = "Commercial" class = "tabcontent">
-        <h3>Commercial Motor Vehicles</h3>
-        <input class = "whole_length_form" type = "search" name = "Location_entered" placeholder="Search your location">
-        <input class = "half_length_form" type = "date" name = "date_entered">
-        <input class = "half_length_form" type = "time" name = "time_entered">
-        <button class = "submit_search" type="submit"> Submit </button>
-
-    </div>
-
-    <div class = "homebox1">
-        <img class ="car" src ="{% static 'images/cars.png' %}">
-    </div>
-
-    <div class = "homebox2">
-        <h3><i>Our Vehicles</i></h3>
-        <p class = "certaintext">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
-    </div>
-
-    <div class = "homebox3">
-        <img class = "car" src = "{% static 'images/customer.png' %}">
-    </div>
-
-    <div class = "homebox4">
-        <h3><i>Our Promise</i></h3>
-        <p class = "certaintext">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
-    </div>
-
-
 </main>
-<div class="footer_home">
-    <p>&copy; 2018 CRC</p>
-</div>
 
-<script>
-    function Options(evt, customer_employee)
-    {
-        var i, tabcontent, tablinks;
-        tabcontent = document.getElementsByClassName("tabcontent");
-        for (i = 0; i < tabcontent.length; i++)
-        {
-            tabcontent[i].style.display = "none";
-        }
-        tablinks = document.getElementsByClassName("tablinks");
-        for (i = 0; i < tablinks.length; i++) 
-        {
-            tablinks[i].className = tablinks[i].className.replace(" active", "");
-        }
-        document.getElementById(customer_employee).style.display = "block";
-        evt.currentTarget.className += " active";
-    }
-    document.getElementById("default").click();
-
-</script>
+<footer>
+<p> &copy; 2018 CRC </p>   
+</footer>
 </body>
 </html>
 
